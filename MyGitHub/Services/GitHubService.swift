@@ -23,14 +23,15 @@ extension GitHubService: TargetType {
         switch self {
         case .users:
             return "/users"
-        case .user(let login):
+        case let .user(login):
             return "/users/\(login)"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .users, .user:
+        case .users,
+             .user:
             return .get
         }
     }
@@ -48,6 +49,6 @@ extension GitHubService: TargetType {
     }
 
     var headers: [String: String]? {
-        return ["Content-type": "application/json"]
+        return ["Content-Type": "application/json;charset=utf-8"]
     }
 }
