@@ -37,10 +37,8 @@ struct UsersView: View {
     var body: some View {
         List {
             ForEach(store.users) { user in
-                Button {
+                UserCard(user: user) {
                     router.show(.userDetails(user.login))
-                } label: {
-                    UserCard(user: user)
                 }
             }
         }
