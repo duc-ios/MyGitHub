@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8970C16A2C8F836700244ABF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C1692C8F836700244ABF /* UserRepository.swift */; };
 		8970C16D2C8F846600244ABF /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16C2C8F846600244ABF /* GitHubService.swift */; };
+		8970C16F2C8F918300244ABF /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */; };
 		89768EF12C8F563200134DF5 /* MyGitHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768EF02C8F563200134DF5 /* MyGitHubApp.swift */; };
 		89768EF32C8F563200134DF5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768EF22C8F563200134DF5 /* AppView.swift */; };
 		89768EF52C8F563200134DF5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768EF42C8F563200134DF5 /* UserModel.swift */; };
@@ -72,6 +73,7 @@
 /* Begin PBXFileReference section */
 		8970C1692C8F836700244ABF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		8970C16C2C8F846600244ABF /* GitHubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
+		8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		89768EED2C8F563200134DF5 /* MyGitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89768EF02C8F563200134DF5 /* MyGitHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGitHubApp.swift; sourceTree = "<group>"; };
 		89768EF22C8F563200134DF5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		89768F292C8F5B2500134DF5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */,
 				89768F242C8F5B2500134DF5 /* Color+Extensions.swift */,
 				89768F252C8F5B2500134DF5 /* JSON+Extensions.swift */,
 				89768F262C8F5B2500134DF5 /* Moya+Concurency.swift */,
@@ -511,6 +514,7 @@
 				89768FA42C8F6C9C00134DF5 /* UserDetailsPresenter.swift in Sources */,
 				89768FA52C8F6C9C00134DF5 /* UserDetailsDataStore.swift in Sources */,
 				89768FA62C8F6C9C00134DF5 /* UserDetailsInteractor.swift in Sources */,
+				8970C16F2C8F918300244ABF /* UINavigationController+Extensions.swift in Sources */,
 				89768FA72C8F6C9C00134DF5 /* UserDetailsView.swift in Sources */,
 				89768FA82C8F6C9C00134DF5 /* UserDetailsModel.swift in Sources */,
 				89768FA92C8F6C9C00134DF5 /* UserDetailsConfigurator.swift in Sources */,

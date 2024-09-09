@@ -32,7 +32,7 @@ let sharedModelContainer: ModelContainer = {
 struct MyGitHubApp: App {
     var body: some Scene {
         WindowGroup {
-            AppView()
+            AppView().tint(.primary)
         }
         .modelContainer(sharedModelContainer)
     }
