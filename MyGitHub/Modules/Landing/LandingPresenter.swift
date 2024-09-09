@@ -35,6 +35,6 @@ extension LandingPresenter: LandingPresentationLogic {
     }
     
     func presentUsers(response: Landing.LoadFirstPageUsers.Response) {
-        view.event = .router(.users)
+        view.event = .router(.users(response.users))
     }
 }

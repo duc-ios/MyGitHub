@@ -33,12 +33,10 @@ struct UsersView: View {
     var interactor: UsersBusinessLogic!
     @ObservedObject var store = UsersDataStore()
     @EnvironmentObject var router: Router
-    @Environment(\.modelContext) private var modelContext
-    @Query private var users: [UserModel]
 
     var body: some View {
         List {
-            ForEach(users) { user in
+            ForEach(store.users) { user in
                 NavigationLink {
                     Text(user.login)
                 } label: {
@@ -46,8 +44,9 @@ struct UsersView: View {
                 }
             }
         }
+        .listStyle(.plain)
         .navigationBarBackButtonHidden()
-        .navigationTitle("Users")
+        .navigationTitle("GitHub Users")
         .alert(store.alertTitle,
                isPresented: $store.displayAlert,
                actions: { Button("OK") {} },
@@ -57,6 +56,14 @@ struct UsersView: View {
 
 #if DEBUG
 #Preview {
-    UsersView().configured()
+    let schema = Schema([UserModel.self])
+    let container = try! ModelContainer(
+        for: schema,
+        configurations:
+        ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+    )
+    return UsersView()
+        .configured(users: (0 ..< 10).map { UserModel(id: $0, login: "User \($0)") })
+        .modelContainer(container)
 }
 #endif

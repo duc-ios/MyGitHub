@@ -17,8 +17,8 @@ struct AppView: View {
                 .configured()
                 .navigationDestination(for: Route.self) {
                     switch $0 {
-                    case .users:
-                        UsersView().configured()
+                    case .users(let users):
+                        UsersView().configured(users: users)
                     case .userDetails(let user):
                         UserDetailsView().configured(user: user)
                     }

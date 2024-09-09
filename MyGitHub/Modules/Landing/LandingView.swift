@@ -17,7 +17,7 @@ enum LandingEvent: Equatable {
     }
 
     enum Router: Equatable {
-        case users
+        case users([UserModel])
     }
 
     case view(View), router(Router)
@@ -53,8 +53,8 @@ struct LandingView: View {
         .onChange(of: store.event) { _, new in
             guard case let .router(event) = new else { return }
             switch event {
-            case .users:
-                router.pop(to: .users)
+            case let .users(users):
+                router.pop(to: .users(users))
             }
         }
         .onAppear {
