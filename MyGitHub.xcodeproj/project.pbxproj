@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		896D734A2C8F975A003485AD /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D73492C8F975A003485AD /* UserCard.swift */; };
 		8970C16A2C8F836700244ABF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C1692C8F836700244ABF /* UserRepository.swift */; };
 		8970C16D2C8F846600244ABF /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16C2C8F846600244ABF /* GitHubService.swift */; };
 		8970C16F2C8F918300244ABF /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		896D73492C8F975A003485AD /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		8970C1692C8F836700244ABF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		8970C16C2C8F846600244ABF /* GitHubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
 		8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		896D73482C8F9648003485AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				896D73492C8F975A003485AD /* UserCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8970C1682C8F835000244ABF /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +305,7 @@
 		89768F732C8F5B7A00134DF5 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				896D73482C8F9648003485AD /* Views */,
 				8970C1682C8F835000244ABF /* Repositories */,
 				89768F742C8F5B8300134DF5 /* UsersPresenter.swift */,
 				89768F752C8F5B8300134DF5 /* UsersDataStore.swift */,
@@ -502,6 +513,7 @@
 				89768F6C2C8F5B2600134DF5 /* ObjectAssociation.swift in Sources */,
 				89768F7A2C8F5B8300134DF5 /* UsersPresenter.swift in Sources */,
 				89768F7B2C8F5B8300134DF5 /* UsersDataStore.swift in Sources */,
+				896D734A2C8F975A003485AD /* UserCard.swift in Sources */,
 				89768F7C2C8F5B8300134DF5 /* UsersInteractor.swift in Sources */,
 				89768F7D2C8F5B8300134DF5 /* UsersView.swift in Sources */,
 				89768F7E2C8F5B8300134DF5 /* UsersModel.swift in Sources */,

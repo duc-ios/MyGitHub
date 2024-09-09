@@ -37,10 +37,10 @@ struct UsersView: View {
     var body: some View {
         List {
             ForEach(store.users) { user in
-                NavigationLink {
-                    Text(user.login)
+                Button {
+                    router.show(.userDetails(user))
                 } label: {
-                    Text(user.login)
+                    UserCard(user: user)
                 }
             }
         }
@@ -63,7 +63,13 @@ struct UsersView: View {
         ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
     )
     return UsersView()
-        .configured(users: (0 ..< 10).map { UserModel(id: $0, login: "User \($0)") })
+        .configured(users: (0 ..< 10).map {
+            UserModel(
+                id: $0,
+                login: "User \($0)",
+                avatarUrl: "https://avatars.githubusercontent.com/u/0"
+            )
+        })
         .modelContainer(container)
 }
 #endif
