@@ -14,7 +14,7 @@ enum UserDetails {
             var title: String
             var message: String
         }
-        
+
         struct Response {
             var title: String
             var message: String
@@ -25,10 +25,21 @@ enum UserDetails {
         struct Request {
             var error: Error
         }
-        
+
         struct Response {
             var error: AppError
         }
     }
+
+    enum GetUserDetails {
+        struct Request {
+            var login: String
+        }
+
+        struct Response {
+            var user: UserModel
+        }
+    }
 }
+
 // swiftlint:enable nesting

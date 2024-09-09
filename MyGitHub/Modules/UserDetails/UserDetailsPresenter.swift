@@ -10,6 +10,7 @@ import UIKit
 protocol UserDetailsPresentationLogic {
     func presentIsLoading(isLoading: Bool)
     func presentError(response: UserDetails.ShowError.Response)
+    func presentUserDetails(response: UserDetails.GetUserDetails.Response)
 }
 
 class UserDetailsPresenter {
@@ -31,5 +32,9 @@ extension UserDetailsPresenter: UserDetailsPresentationLogic {
 
     func presentError(response: UserDetails.ShowError.Response) {
         view.event = .view(.error(response.error))
+    }
+    
+    func presentUserDetails(response: UserDetails.GetUserDetails.Response) {
+        view.event = .view(.user(response.user))
     }
 }

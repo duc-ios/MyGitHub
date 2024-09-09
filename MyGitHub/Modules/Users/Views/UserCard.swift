@@ -38,7 +38,7 @@ struct UserCard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 8))
-        .shadow(color: .primary, radius: 5, y: 3)
+        .shadow(color: .primary.opacity(0.3), radius: 5, y: 3)
         .listRowSeparator(.hidden)
     }
 }

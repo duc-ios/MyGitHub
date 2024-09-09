@@ -11,7 +11,8 @@ import Moya
 // MARK: - GitHubService
 
 enum GitHubService {
-    case users(perPage: Int, since: Int)
+    case users(perPage: Int, since: Int),
+         user(String)
 }
 
 // MARK: TargetType
@@ -22,12 +23,14 @@ extension GitHubService: TargetType {
         switch self {
         case .users:
             return "/users"
+        case .user(let login):
+            return "/users/\(login)"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .users:
+        case .users, .user:
             return .get
         }
     }
@@ -39,6 +42,8 @@ extension GitHubService: TargetType {
                 "per_page": perPage,
                 "since": since
             ], encoding: URLEncoding.queryString)
+        case .user:
+            return .requestPlain
         }
     }
 

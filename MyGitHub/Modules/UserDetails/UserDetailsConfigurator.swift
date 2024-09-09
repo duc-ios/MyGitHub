@@ -9,13 +9,16 @@ import Foundation
 
 extension UserDetailsView {
     func configured(
-        user: UserModel
+        login: String
     ) -> UserDetailsView {
         var view = self
         let presenter = UserDetailsPresenter(view: view.store)
-        let interactor = UserDetailsInteractor(presenter: presenter)
+        let interactor = UserDetailsInteractor(
+            presenter: presenter,
+            repository: UserRepositoryImp()
+        )
         view.interactor = interactor
-        view.store.user = user
+        view.store.login = login
         return view
     }
 }

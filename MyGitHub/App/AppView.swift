@@ -19,8 +19,8 @@ struct AppView: View {
                     switch $0 {
                     case .users(let users):
                         UsersView().configured(users: users)
-                    case .userDetails(let user):
-                        UserDetailsView().configured(user: user)
+                    case .userDetails(let login):
+                        UserDetailsView().configured(login: login)
                     }
                 }
         }
