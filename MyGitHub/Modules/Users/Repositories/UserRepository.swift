@@ -21,7 +21,7 @@ class UserRepositoryImp: UserRepository {
     private let provider = MoyaProvider<GitHubService>(plugins: [VerbosePlugin(verbose: true)])
     
     func getUsers(since: Int) async throws -> [UserModel] {
-        try await provider.async.request(.users(perPage: Constants.perPage, since: 0))
+        try await provider.async.request(.users(perPage: Constants.perPage, since: since))
     }
     
     func getUser(login: String) async throws -> UserModel {

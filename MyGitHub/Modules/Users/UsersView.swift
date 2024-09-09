@@ -15,7 +15,7 @@ enum UsersEvent: Equatable {
         case loading(Bool),
              alert(title: String, message: String),
              error(AppError),
-             users([UserModel])
+             users(users: [UserModel], hasMore: Bool)
     }
 
     case view(View)
@@ -40,6 +40,17 @@ struct UsersView: View {
                 UserCard(user: user) {
                     router.show(.userDetails(user.login))
                 }
+            }
+
+            if store.hasMore {
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .foregroundColor(.black)
+                    .foregroundColor(.red)
+                    .onAppear {
+                        interactor.loadUsers(request: .init(since: (store.users.last?.id ?? 0)))
+                    }
+                    .listRowSeparator(.hidden)
             }
         }
         .listStyle(.plain)

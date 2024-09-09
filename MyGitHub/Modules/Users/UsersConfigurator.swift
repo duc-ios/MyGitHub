@@ -13,7 +13,11 @@ extension UsersView {
     ) -> UsersView {
         var view = self
         let presenter = UsersPresenter(view: view.store)
-        let interactor = UsersInteractor(presenter: presenter)
+        let interactor = UsersInteractor(
+            presenter: presenter,
+            repository: UserRepositoryImp(),
+            modelContext: sharedModelContainer.mainContext
+        )
         view.interactor = interactor
         view.store.users = users
         return view

@@ -10,6 +10,7 @@
 		896D734A2C8F975A003485AD /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D73492C8F975A003485AD /* UserCard.swift */; };
 		896D734D2C8FA177003485AD /* UserDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D734C2C8FA177003485AD /* UserDetailsHeader.swift */; };
 		896D734F2C8FA295003485AD /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D734E2C8FA295003485AD /* RoundButton.swift */; };
+		896D73512C8FB3FB003485AD /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D73502C8FB3FB003485AD /* MD5.swift */; };
 		8970C16A2C8F836700244ABF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C1692C8F836700244ABF /* UserRepository.swift */; };
 		8970C16D2C8F846600244ABF /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16C2C8F846600244ABF /* GitHubService.swift */; };
 		8970C16F2C8F918300244ABF /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */; };
@@ -77,6 +78,7 @@
 		896D73492C8F975A003485AD /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		896D734C2C8FA177003485AD /* UserDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHeader.swift; sourceTree = "<group>"; };
 		896D734E2C8FA295003485AD /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		896D73502C8FB3FB003485AD /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		8970C1692C8F836700244ABF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		8970C16C2C8F846600244ABF /* GitHubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
 		8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				89768F472C8F5B2600134DF5 /* Route.swift */,
 				89768F482C8F5B2600134DF5 /* Router.swift */,
 				89768F4B2C8F5B2600134DF5 /* VerbosePlugin.swift */,
+				896D73502C8FB3FB003485AD /* MD5.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				89768F522C8F5B2600134DF5 /* JSON+Extensions.swift in Sources */,
 				89768F542C8F5B2600134DF5 /* Num+Extensions.swift in Sources */,
 				89768F872C8F600200134DF5 /* AppError.swift in Sources */,
+				896D73512C8FB3FB003485AD /* MD5.swift in Sources */,
 				89768F512C8F5B2600134DF5 /* Color+Extensions.swift in Sources */,
 				89768FA42C8F6C9C00134DF5 /* UserDetailsPresenter.swift in Sources */,
 				89768FA52C8F6C9C00134DF5 /* UserDetailsDataStore.swift in Sources */,

@@ -5,18 +5,19 @@
 //  Created by Duc on 9/9/24.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 final class UsersDataStore: BaseDataStore, UsersDisplayLogic {
     @Published var event: UsersEvent?
-    
+
     // MARK: - Variable
-    
+
     @Published var users: [UserModel] = []
+    @Published var hasMore: Bool = true
 
     // MARK: -
-    
+
     override init() {
         super.init()
 
@@ -40,8 +41,9 @@ final class UsersDataStore: BaseDataStore, UsersDisplayLogic {
             displayAlert = true
         case .error(let error):
             self.event = .view(.alert(title: error.title, message: error.message))
-        case .users(let users):
-            self.users = users
+        case .users(let users, let hasMore):
+            self.users += users
+            self.hasMore = hasMore
         }
     }
 }

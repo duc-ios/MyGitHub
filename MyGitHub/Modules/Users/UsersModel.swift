@@ -40,6 +40,17 @@ enum Users {
             var users: [UserModel]
         }
     }
+
+    enum LoadUsers {
+        struct Request {
+            var since: Int
+        }
+
+        struct Response {
+            var users: [UserModel]
+            var hasMore: Bool
+        }
+    }
 }
 
 // swiftlint:enable nesting
