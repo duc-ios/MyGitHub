@@ -10,8 +10,37 @@ import SwiftUI
 // MARK: - UserDetailsBusinessLogic
 
 protocol UserDetailsBusinessLogic {
+    /// Updates the view to show or hide a loading indicator based on the `isLoading` flag.
+    ///
+    /// - Parameter isLoading: A boolean indicating whether the loading indicator should be shown (`true`) or hidden (`false`).
+    ///
+    /// Example:
+    /// ```swift
+    /// showLoading(isLoading: true)  // Display the loading indicator
+    /// showLoading(isLoading: false) // Hide the loading indicator
+    /// ```
     func showLoading(isLoading: Bool)
+
+    /// Handles a request to display an error, typically triggered by a failure in loading data or user interaction issues.
+    ///
+    /// - Parameter request: A `UserDetails.ShowError.Request` object containing details about the error.
+    ///
+    /// Example:
+    /// ```swift
+    /// let errorRequest = UserDetails.ShowError.Request(error: AppError.notFound)
+    /// showError(request: errorRequest)
+    /// ```
     func showError(request: UserDetails.ShowError.Request)
+
+    /// Handles the request to display a list of users in the view.
+    ///
+    /// - Parameter request: A `UserDetails.GetUserDetails.Request` object containing the data required to display users.
+    ///
+    /// Example:
+    /// ```swift
+    /// let showUsersRequest = UserDetails.GetUserDetails.Request(login: "duc-ios")
+    /// showUsers(request: showUsersRequest)
+    /// ```
     func getUserDetails(request: UserDetails.GetUserDetails.Request)
 }
 
