@@ -31,6 +31,7 @@ struct UserCard: View {
                         UIApplication.shared.open(url)
                     } label: {
                         Text(user.htmlUrl)
+                            .foregroundStyle(.blue)
                             .font(.caption)
                             .underline()
                     }

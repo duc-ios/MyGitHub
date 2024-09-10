@@ -35,41 +35,76 @@ struct UserDetailsView: View {
     @EnvironmentObject var router: Router
 
     var body: some View {
-        VStack(spacing: 24) {
-            if store.isLoading {
-                ProgressView().scaleEffect(x: 2, y: 2)
-            } else {
-                UserDetailsHeader(
-                    avatarUrl: store.avatarUrl,
-                    login: store.login,
-                    location: store.location
-                )
+        List {
+            Group {
+                if store.isLoading {
+                    ProgressView().scaleEffect(x: 2, y: 2)
+                } else {
+                    UserDetailsHeader(
+                        avatarUrl: store.avatarUrl,
+                        name: store.name,
+                        login: store.login,
+                        bio: store.bio
+                    )
+                }
             }
+            .listRowSeparator(.hidden)
 
             HStack {
-                RoundButton(iconName: "person.2.fill", total: store.followers > 100 ? "100+" : "\(store.followers)", title: store.followers == 1 ? "Follower" : "Followers")
+                Spacer()
 
-                RoundButton(iconName: "figure.walk", total: store.following > 100 ? "100+" : "\(store.following)", title: store.following == 1 ? "Following" : "Followings")
+                RoundButton(
+                    iconName: "person.2.fill",
+                    total: store.totalFollowers,
+                    title: store.followers
+                ) {
+                    guard let followersUrl = store.user.followersUrl,
+                          let url = URL(string: followersUrl)
+                    else { return }
+                    UIApplication.shared.open(url)
+                }
+
+                Spacer()
+
+                RoundButton(
+                    iconName: "figure.walk",
+                    total: store.totalFollowing,
+                    title: store.following
+                ) {
+                    guard let followingUrl = store.user.followingUrl,
+                          let url = URL(string: followingUrl)
+                    else { return }
+                    UIApplication.shared.open(url)
+                }
+
+                Spacer()
             }
+            .listRowSeparator(.hidden)
 
-            VStack(alignment: .leading) {
-                Text("Blog").font(.title3).bold()
-                Text(store.blog)
-                    .foregroundStyle(Color(.systemGray))
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            DetailCard(icon: "mappin.and.ellipse",
+                       title: "Location",
+                       detail: store.location)
 
-            Spacer()
+            DetailCard(icon: "suitcase",
+                       title: "Company",
+                       detail: store.company)
+
+            DetailCard(icon: "bird",
+                       title: "Twitter",
+                       detail: store.twitter)
+
+            DetailCard(icon: "pencil.and.scribble",
+                       title: "Blog",
+                       detail: store.blog)
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .listStyle(.plain)
         .navigationTitle("User Details")
         .alert(store.alertTitle,
                isPresented: $store.displayAlert,
                actions: { Button("OK") {} },
                message: { Text(store.alertMessage) })
         .onAppear {
-            interactor.getUserDetails(request: .init(login: store.login))
+            interactor.getUserDetails(request: .init(login: store.user.login))
         }
     }
 }
@@ -82,6 +117,8 @@ struct UserDetailsView: View {
         configurations:
         ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
     )
-    return UserDetailsView().configured(login: "login")
+    return UserDetailsView()
+        .configured(user: UserModel(login: "mojombo"))
+        .modelContainer(container)
 }
 #endif

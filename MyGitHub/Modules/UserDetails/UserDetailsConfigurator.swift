@@ -9,7 +9,7 @@ import Foundation
 
 extension UserDetailsView {
     func configured(
-        login: String
+        user: UserModel
     ) -> UserDetailsView {
         var view = self
         let presenter = UserDetailsPresenter(view: view.store)
@@ -18,7 +18,7 @@ extension UserDetailsView {
             repository: UserRepositoryImp()
         )
         view.interactor = interactor
-        view.store.login = login
+        view.store.user = user
         return view
     }
 }

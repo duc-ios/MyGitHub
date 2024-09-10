@@ -15,14 +15,20 @@ final class UserDetailsDataStore: BaseDataStore, UserDetailsDisplayLogic {
 
     @Published var event: UserDetailEvent?
 
-    var login: String!
+    var user: UserModel!
 
-    @Published var name: String = ""
     @Published var avatarUrl: String = ""
+    @Published var name: String = ""
+    @Published var login: String = ""
+    @Published var twitter: String = ""
     @Published var location: String = ""
-    @Published var followers: Int = 0
-    @Published var following: Int = 0
+    @Published var company: String = ""
+    @Published var totalFollowers: String = ""
+    @Published var totalFollowing: String = ""
+    @Published var followers: String = ""
+    @Published var following: String = ""
     @Published var blog: String = ""
+    @Published var bio: String = ""
 
     // MARK: -
 
@@ -50,16 +56,26 @@ final class UserDetailsDataStore: BaseDataStore, UserDetailsDisplayLogic {
         case .error(let error):
             self.event = .view(.alert(title: error.title, message: error.message))
         case .user(let user):
-            name = user.name ?? ""
             if let avatarUrl = user.avatarUrl {
                 self.avatarUrl = avatarUrl
             } else if let gravatarId = user.gravatarId {
                 avatarUrl = "http://www.gravatar.com/avatar/\(MD5(gravatarId))?s=100"
             }
+            name = user.name ?? ""
+            login = user.login
+            if let twitterUsername = user.twitterUsername {
+                twitter = "@\(twitterUsername)"
+            } else {
+                twitter = "N/A"
+            }
             location = user.location ?? "N/A"
-            followers = user.followers
-            following = user.following
+            company = user.company ?? "N/A"
+            totalFollowers = user.followers > 100 ? "100+" : "\(user.followers)"
+            totalFollowing = user.following > 100 ? "100+" : "\(user.following)"
+            followers = user.followers == 1 ? "Follower" : "Followers"
+            following = user.following == 1 ? "Following" : "Followings"
             blog = user.blog ?? "N/A"
+            bio = user.bio ?? "N/A"
         }
     }
 }

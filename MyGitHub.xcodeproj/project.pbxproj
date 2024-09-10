@@ -11,6 +11,7 @@
 		896D734D2C8FA177003485AD /* UserDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D734C2C8FA177003485AD /* UserDetailsHeader.swift */; };
 		896D734F2C8FA295003485AD /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D734E2C8FA295003485AD /* RoundButton.swift */; };
 		896D73512C8FB3FB003485AD /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D73502C8FB3FB003485AD /* MD5.swift */; };
+		896D73532C90167B003485AD /* DetailCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D73522C90167B003485AD /* DetailCard.swift */; };
 		8970C16A2C8F836700244ABF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C1692C8F836700244ABF /* UserRepository.swift */; };
 		8970C16D2C8F846600244ABF /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16C2C8F846600244ABF /* GitHubService.swift */; };
 		8970C16F2C8F918300244ABF /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */; };
@@ -79,6 +80,7 @@
 		896D734C2C8FA177003485AD /* UserDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHeader.swift; sourceTree = "<group>"; };
 		896D734E2C8FA295003485AD /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		896D73502C8FB3FB003485AD /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
+		896D73522C90167B003485AD /* DetailCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCard.swift; sourceTree = "<group>"; };
 		8970C1692C8F836700244ABF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		8970C16C2C8F846600244ABF /* GitHubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
 		8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			children = (
 				896D734C2C8FA177003485AD /* UserDetailsHeader.swift */,
 				896D734E2C8FA295003485AD /* RoundButton.swift */,
+				896D73522C90167B003485AD /* DetailCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				89768F942C8F6AC000134DF5 /* LandingPresenter.swift in Sources */,
 				8970C16A2C8F836700244ABF /* UserRepository.swift in Sources */,
 				89768F952C8F6AC000134DF5 /* LandingDataStore.swift in Sources */,
+				896D73532C90167B003485AD /* DetailCard.swift in Sources */,
 				89768F962C8F6AC000134DF5 /* LandingInteractor.swift in Sources */,
 				89768F972C8F6AC000134DF5 /* LandingView.swift in Sources */,
 				89768F982C8F6AC000134DF5 /* LandingModel.swift in Sources */,

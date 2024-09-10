@@ -38,7 +38,7 @@ struct UsersView: View {
         List {
             ForEach(store.users) { user in
                 UserCard(user: user) {
-                    router.show(.userDetails(user.login))
+                    router.show(.userDetails(user))
                 }
             }
 

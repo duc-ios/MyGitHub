@@ -19,13 +19,6 @@ final class UserModel {
     var htmlUrl: String
     var followersUrl: String?
     var followingUrl: String?
-    var gistsUrl: String?
-    var starredUrl: String?
-    var subscriptionsUrl: String?
-    var organizationsUrl: String?
-    var reposUrl: String?
-    var eventsUrl: String?
-    var receivedEventsUrl: String?
     var name: String?
     var company: String?
     var blog: String?
@@ -33,8 +26,6 @@ final class UserModel {
     var email: String?
     var bio: String?
     var twitterUsername: String?
-    var publicRepos: Int = 0
-    var publicGists: Int = 0
     var followers: Int = 0
     var following: Int = 0
 
@@ -62,13 +53,6 @@ extension UserModel: Codable {
              htmlUrl,
              followersUrl,
              followingUrl,
-             gistsUrl,
-             starredUrl,
-             subscriptionsUrl,
-             organizationsUrl,
-             reposUrl,
-             eventsUrl,
-             receivedEventsUrl,
              name,
              company,
              blog,
@@ -76,8 +60,6 @@ extension UserModel: Codable {
              email,
              bio,
              twitterUsername,
-             publicRepos,
-             publicGists,
              followers,
              following
     }
@@ -92,13 +74,6 @@ extension UserModel: Codable {
         htmlUrl = try container.decode(String.self, forKey: .htmlUrl)
         followersUrl = try container.decodeIfPresent(String.self, forKey: .followersUrl)
         followingUrl = try container.decodeIfPresent(String.self, forKey: .followingUrl)
-        gistsUrl = try container.decodeIfPresent(String.self, forKey: .gistsUrl)
-        starredUrl = try container.decodeIfPresent(String.self, forKey: .starredUrl)
-        subscriptionsUrl = try container.decodeIfPresent(String.self, forKey: .subscriptionsUrl)
-        organizationsUrl = try container.decodeIfPresent(String.self, forKey: .organizationsUrl)
-        reposUrl = try container.decodeIfPresent(String.self, forKey: .reposUrl)
-        eventsUrl = try container.decodeIfPresent(String.self, forKey: .eventsUrl)
-        receivedEventsUrl = try container.decodeIfPresent(String.self, forKey: .receivedEventsUrl)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         company = try container.decodeIfPresent(String.self, forKey: .company)
         blog = try container.decodeIfPresent(String.self, forKey: .blog)
@@ -106,8 +81,6 @@ extension UserModel: Codable {
         email = try container.decodeIfPresent(String.self, forKey: .email)
         bio = try container.decodeIfPresent(String.self, forKey: .bio)
         twitterUsername = try container.decodeIfPresent(String.self, forKey: .twitterUsername)
-        publicRepos = try container.decodeIfPresent(Int.self, forKey: .publicRepos) ?? 0
-        publicGists = try container.decodeIfPresent(Int.self, forKey: .publicGists) ?? 0
         followers = try container.decodeIfPresent(Int.self, forKey: .followers) ?? 0
         following = try container.decodeIfPresent(Int.self, forKey: .following) ?? 0
     }
@@ -121,13 +94,6 @@ extension UserModel: Codable {
         try container.encode(htmlUrl, forKey: .htmlUrl)
         try container.encode(followersUrl, forKey: .followersUrl)
         try container.encode(followingUrl, forKey: .followingUrl)
-        try container.encode(gistsUrl, forKey: .gistsUrl)
-        try container.encode(starredUrl, forKey: .starredUrl)
-        try container.encode(subscriptionsUrl, forKey: .subscriptionsUrl)
-        try container.encode(organizationsUrl, forKey: .organizationsUrl)
-        try container.encode(reposUrl, forKey: .reposUrl)
-        try container.encode(eventsUrl, forKey: .eventsUrl)
-        try container.encode(receivedEventsUrl, forKey: .receivedEventsUrl)
         try container.encode(name, forKey: .name)
         try container.encode(company, forKey: .company)
         try container.encode(blog, forKey: .blog)
@@ -135,8 +101,6 @@ extension UserModel: Codable {
         try container.encode(email, forKey: .email)
         try container.encode(bio, forKey: .bio)
         try container.encode(twitterUsername, forKey: .twitterUsername)
-        try container.encode(publicRepos, forKey: .publicRepos)
-        try container.encode(publicGists, forKey: .publicGists)
         try container.encode(followers, forKey: .followers)
         try container.encode(following, forKey: .following)
     }

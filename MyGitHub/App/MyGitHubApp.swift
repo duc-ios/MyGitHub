@@ -10,7 +10,7 @@ import SwiftUI
 
 let sharedModelContainer: ModelContainer = {
     let schema = Schema([
-        UserModel.self,
+        UserModel.self
     ])
     let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

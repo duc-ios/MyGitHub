@@ -10,8 +10,9 @@ import SwiftUI
 
 struct UserDetailsHeader: View {
     let avatarUrl: String?
+    var name: String?
     let login: String
-    let location: String?
+    var bio: String?
 
     var body: some View {
         HStack(alignment: .top) {
@@ -24,14 +25,17 @@ struct UserDetailsHeader: View {
             .clipShape(Circle())
 
             VStack(alignment: .leading) {
-                Text(login).font(.title2.weight(.semibold))
+                Text(name ?? login).font(.title2.weight(.semibold))
+                if !name.isNilOrBlank {
+                    Text(login)
+                        .font(.callout)
+                        .foregroundStyle(.gray)
+                }
                 Divider()
-                if let location {
-                    HStack {
-                        Image(systemName: "mappin.and.ellipse")
-                        Text(location)
-                    }
-                    .font(.caption)
+                if let bio {
+                    Text(bio)
+                        .foregroundStyle(.gray)
+                        .font(.caption)
                 }
             }
         }
@@ -52,7 +56,7 @@ struct UserDetailsHeader: View {
     )
     return UserDetailsHeader(
         avatarUrl: "https://avatars.githubusercontent.com/u/0",
-        login: "login",
-        location: "Vietnam"
+        name: "Name",
+        login: "login"
     )
 }
