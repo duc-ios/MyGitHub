@@ -32,6 +32,6 @@ struct DetailCard: View {
     DetailCard(
         icon: "pencil.and.scribble",
         title: "Blog",
-        detail: "https://www.goolge.com"
+        detail: "https://www.google.com"
     )
 }
