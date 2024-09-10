@@ -1,14 +1,14 @@
 //
-//  UsersModel.swift
+//  UserDetailsUseCases.swift
 //  MyGitHub
 //
-//  Created by Duc on 9/9/24.
+//  Created by Duc on 10/9/24.
 //
 
 import Foundation
 
 // swiftlint:disable nesting
-enum Users {
+enum UserDetails {
     enum ShowAlert {
         struct Request {
             var title: String
@@ -31,24 +31,13 @@ enum Users {
         }
     }
 
-    enum ShowUsers {
+    enum GetUserDetails {
         struct Request {
-            var users: [UserModel]
+            var login: String
         }
 
         struct Response {
-            var users: [UserModel]
-        }
-    }
-
-    enum LoadUsers {
-        struct Request {
-            var since: Int
-        }
-
-        struct Response {
-            var users: [UserModel]
-            var hasMore: Bool
+            var user: UserModel
         }
     }
 }
