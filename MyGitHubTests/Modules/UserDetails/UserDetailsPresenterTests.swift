@@ -1,5 +1,5 @@
 //
-//  UsersPresenterTests.swift
+//  UsersDetailPresenterTests.swift
 //  MyGitHubTests
 //
 //  Created by Duc on 10/9/24.
@@ -8,17 +8,17 @@
 @testable import MyGitHub
 import XCTest
 
-// MARK: - UsersPresenterTests
+// MARK: - UserDetailsPresenterTests
 
-class UsersPresenterTests: XCTestCase {
-    private var sut: UsersPresenter!
-    private var view: UsersDisplayLogicMock!
+class UserDetailsPresenterTests: XCTestCase {
+    private var sut: UserDetailsPresenter!
+    private var view: UserDetailsDisplayLogicMock!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        view = UsersDisplayLogicMock()
-        sut = UsersPresenter(view: view)
+        view = UserDetailsDisplayLogicMock()
+        sut = UserDetailsPresenter(view: view)
     }
     
     override func tearDownWithError() throws {
@@ -32,13 +32,12 @@ class UsersPresenterTests: XCTestCase {
     
     func testPresentUsers() {
         // given
-        let users: [UserModel] = []
         
         // when
-        sut.presentUsers(response: .init(users: users, hasMore: true))
+        sut.presentUserDetails(response: .init(user: UserModel()))
         
         // then
-        XCTAssertEqual(view.users, users, "View should receive the request user list.")
+        XCTAssertNotNil(view.user, "View should receive a non-nil user.")
     }
     
     func testPresentError() {
@@ -52,17 +51,16 @@ class UsersPresenterTests: XCTestCase {
     }
 }
 
-// MARK: - UsersDisplayLogicMock
+// MARK: - UserDetailsDisplayLogicMock
 
-class UsersDisplayLogicMock: UsersDisplayLogic {
+class UserDetailsDisplayLogicMock: UserDetailsDisplayLogic {
     var isLoading = false
     var alertTitle: String?
     var alertMessage: String?
     var error: AppError?
-    var users: [UserModel]?
-    var hasMore = false
+    var user: UserModel?
     
-    var event: UsersEvent? {
+    var event: UserDetailsEvent? {
         didSet {
             switch event {
             case .view(let view):
@@ -74,9 +72,8 @@ class UsersDisplayLogicMock: UsersDisplayLogic {
                     alertMessage = message
                 case .error(let error):
                     self.error = error
-                case .users(let users, let hasMore):
-                    self.users = users
-                    self.hasMore = hasMore
+                case .user(let user):
+                    self.user = user
                 }
             default:
                 break

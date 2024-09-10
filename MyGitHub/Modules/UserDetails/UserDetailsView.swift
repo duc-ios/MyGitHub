@@ -8,9 +8,9 @@
 import SwiftData
 import SwiftUI
 
-// MARK: - UserDetailEvent
+// MARK: - UserDetailsEvent
 
-enum UserDetailEvent: Equatable {
+enum UserDetailsEvent: Equatable {
     enum View: Equatable {
         case loading(Bool),
              alert(title: String, message: String),
@@ -24,7 +24,7 @@ enum UserDetailEvent: Equatable {
 // MARK: - UserDetailsDisplayLogic
 
 protocol UserDetailsDisplayLogic {
-    var event: UserDetailEvent? { get set }
+    var event: UserDetailsEvent? { get set }
 }
 
 // MARK: - UserDetailsView

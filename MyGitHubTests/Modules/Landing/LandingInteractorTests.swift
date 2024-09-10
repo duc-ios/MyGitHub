@@ -1,5 +1,5 @@
 //
-//  UsersInteractorTests.swift
+//  LandingInteractorTests.swift
 //  MyGitHubTests
 //
 //  Created by Duc on 10/9/24.
@@ -9,11 +9,11 @@
 import SwiftData
 import XCTest
 
-// MARK: - UsersInteractorTests
+// MARK: - LandingInteractorTests
 
-class UsersInteractorTests: XCTestCase {
-    private var sut: UsersInteractor!
-    private var presenter: UsersPresenterMock!
+class LandingInteractorTests: XCTestCase {
+    private var sut: LandingInteractor!
+    private var presenter: LandingPresenterMock!
     private var modelContainer: ModelContainer!
 
     override func setUpWithError() throws {
@@ -35,10 +35,10 @@ class UsersInteractorTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    @MainActor func testLoadUsersSuccess() {
+    @MainActor func testLoadFirstPageUsersSuccess() {
         // given
-        presenter = UsersPresenterMock()
-        sut = UsersInteractor(
+        presenter = LandingPresenterMock()
+        sut = LandingInteractor(
             presenter: presenter,
             repository: UserRepositoryMock(),
             modelContext: modelContainer.mainContext
@@ -46,7 +46,7 @@ class UsersInteractorTests: XCTestCase {
         let promise = expectation(description: "User List Received")
 
         // when
-        sut.loadUsers(request: .init(since: 0))
+        sut.loadFirstPageUsers(request: .init(since: 0))
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             promise.fulfill()
 
@@ -57,10 +57,10 @@ class UsersInteractorTests: XCTestCase {
         wait(for: [promise], timeout: 5)
     }
 
-    @MainActor func testLoadUsersFailure() {
+    @MainActor func testLoadFirstPageUsersFailure() {
         // given
-        presenter = UsersPresenterMock()
-        sut = UsersInteractor(
+        presenter = LandingPresenterMock()
+        sut = LandingInteractor(
             presenter: presenter,
             repository: UserRepositoryMock(),
             modelContext: modelContainer.mainContext
@@ -68,7 +68,7 @@ class UsersInteractorTests: XCTestCase {
         let promise = expectation(description: "Error Received")
 
         // when
-        sut.loadUsers(request: .init(since: -1))
+        sut.loadFirstPageUsers(request: .init(since: -1))
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             promise.fulfill()
 
@@ -80,9 +80,9 @@ class UsersInteractorTests: XCTestCase {
     }
 }
 
-// MARK: - UsersPresenterMock
+// MARK: - LandingPresenterMock
 
-class UsersPresenterMock: UsersPresentationLogic {
+class LandingPresenterMock: LandingPresentationLogic {
     var isLoading = false
     var error: Error?
     var users: [UserModel]?
@@ -91,31 +91,11 @@ class UsersPresenterMock: UsersPresentationLogic {
         self.isLoading = isLoading
     }
 
-    func presentError(response: Users.ShowError.Response) {
+    func presentError(response: Landing.ShowError.Response) {
         error = response.error
     }
-
-    func presentUsers(response: Users.LoadUsers.Response) {
-        users = response.users
-    }
-}
-
-// MARK: - UserRepositoryMock
-
-class UserRepositoryMock: UserRepository {
-    func getUsers(since: Int) async throws -> [UserModel] {
-        if since < 0 {
-            throw AppError.badRequest
-        } else {
-            return []
-        }
-    }
-
-    func getUser(login: String) async throws -> UserModel {
-        if login.isBlank {
-            throw AppError.badRequest
-        } else {
-            return UserModel()
-        }
+    
+    func presentUsers(response: Landing.LoadFirstPageUsers.Response) {
+        self.users = response.users
     }
 }

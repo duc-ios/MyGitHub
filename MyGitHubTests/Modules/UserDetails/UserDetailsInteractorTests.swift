@@ -11,9 +11,9 @@ import XCTest
 
 // MARK: - UsersInteractorTests
 
-class UsersInteractorTests: XCTestCase {
+class UserDetailsInteractorTests: XCTestCase {
     private var sut: UsersInteractor!
-    private var presenter: UsersPresenterMock!
+    private var presenter: UserDetailsPresenterMock!
     private var modelContainer: ModelContainer!
 
     override func setUpWithError() throws {
@@ -35,9 +35,9 @@ class UsersInteractorTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    @MainActor func testLoadUsersSuccess() {
+    @MainActor func testSuccess() {
         // given
-        presenter = UsersPresenterMock()
+        presenter = UserDetailsPresenterMock()
         sut = UsersInteractor(
             presenter: presenter,
             repository: UserRepositoryMock(),
@@ -57,9 +57,9 @@ class UsersInteractorTests: XCTestCase {
         wait(for: [promise], timeout: 5)
     }
 
-    @MainActor func testLoadUsersFailure() {
+    @MainActor func testFailure() {
         // given
-        presenter = UsersPresenterMock()
+        presenter = UserDetailsPresenterMock()
         sut = UsersInteractor(
             presenter: presenter,
             repository: UserRepositoryMock(),
@@ -80,9 +80,9 @@ class UsersInteractorTests: XCTestCase {
     }
 }
 
-// MARK: - UsersPresenterMock
+// MARK: - UserDetailsPresenterMock
 
-class UsersPresenterMock: UsersPresentationLogic {
+class UserDetailsPresenterMock: UsersPresentationLogic {
     var isLoading = false
     var error: Error?
     var users: [UserModel]?
@@ -97,25 +97,5 @@ class UsersPresenterMock: UsersPresentationLogic {
 
     func presentUsers(response: Users.LoadUsers.Response) {
         users = response.users
-    }
-}
-
-// MARK: - UserRepositoryMock
-
-class UserRepositoryMock: UserRepository {
-    func getUsers(since: Int) async throws -> [UserModel] {
-        if since < 0 {
-            throw AppError.badRequest
-        } else {
-            return []
-        }
-    }
-
-    func getUser(login: String) async throws -> UserModel {
-        if login.isBlank {
-            throw AppError.badRequest
-        } else {
-            return UserModel()
-        }
     }
 }

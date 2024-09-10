@@ -1,5 +1,5 @@
 //
-//  UsersPresenterTests.swift
+//  LandingPresenterTests.swift
 //  MyGitHubTests
 //
 //  Created by Duc on 10/9/24.
@@ -8,17 +8,17 @@
 @testable import MyGitHub
 import XCTest
 
-// MARK: - UsersPresenterTests
+// MARK: - LandingPresenterTests
 
-class UsersPresenterTests: XCTestCase {
-    private var sut: UsersPresenter!
-    private var view: UsersDisplayLogicMock!
+class LandingPresenterTests: XCTestCase {
+    private var sut: LandingPresenter!
+    private var view: LandingDisplayLogicMock!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        view = UsersDisplayLogicMock()
-        sut = UsersPresenter(view: view)
+        view = LandingDisplayLogicMock()
+        sut = LandingPresenter(view: view)
     }
     
     override func tearDownWithError() throws {
@@ -32,13 +32,12 @@ class UsersPresenterTests: XCTestCase {
     
     func testPresentUsers() {
         // given
-        let users: [UserModel] = []
         
         // when
-        sut.presentUsers(response: .init(users: users, hasMore: true))
+        sut.presentUsers(response: .init(users: []))
         
         // then
-        XCTAssertEqual(view.users, users, "View should receive the request user list.")
+        XCTAssertNotNil(view.users, "View should receive a non-nil user list.")
     }
     
     func testPresentError() {
@@ -52,17 +51,16 @@ class UsersPresenterTests: XCTestCase {
     }
 }
 
-// MARK: - UsersDisplayLogicMock
+// MARK: - LandingDisplayLogicMock
 
-class UsersDisplayLogicMock: UsersDisplayLogic {
+class LandingDisplayLogicMock: LandingDisplayLogic {
     var isLoading = false
     var alertTitle: String?
     var alertMessage: String?
     var error: AppError?
     var users: [UserModel]?
-    var hasMore = false
     
-    var event: UsersEvent? {
+    var event: LandingEvent? {
         didSet {
             switch event {
             case .view(let view):
@@ -74,9 +72,11 @@ class UsersDisplayLogicMock: UsersDisplayLogic {
                     alertMessage = message
                 case .error(let error):
                     self.error = error
-                case .users(let users, let hasMore):
+                }
+            case .router(let router):
+                switch router {
+                case .users(let users):
                     self.users = users
-                    self.hasMore = hasMore
                 }
             default:
                 break

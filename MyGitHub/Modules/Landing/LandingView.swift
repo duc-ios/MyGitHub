@@ -58,7 +58,7 @@ struct LandingView: View {
             }
         }
         .onAppear {
-            interactor.loadFirstPageUsers(request: .init())
+            interactor.loadFirstPageUsers(request: .init(since: 0))
         }
     }
 }

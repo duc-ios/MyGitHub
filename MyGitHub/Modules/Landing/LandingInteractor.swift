@@ -39,7 +39,7 @@ protocol LandingBusinessLogic {
     ///
     /// Example:
     /// ```swift
-    /// let request = Landing.LoadFirstPageUsers.Request(since: 100)
+    /// let request = Landing.LoadFirstPageUsers.Request(since: 0)
     /// loadFirstPageUsers(request: request)
     /// ```
     func loadFirstPageUsers(request: Landing.LoadFirstPageUsers.Request)
@@ -81,7 +81,7 @@ extension LandingInteractor: LandingBusinessLogic {
                 Task { @MainActor in
                     do {
                         presenter.presentIsLoading(isLoading: true)
-                        let users = try await repository.getUsers(since: 0)
+                        let users = try await repository.getUsers(since: request.since)
                         for user in users {
                             modelContext.insert(user)
                         }

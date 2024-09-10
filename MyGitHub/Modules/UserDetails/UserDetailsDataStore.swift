@@ -13,7 +13,7 @@ import Foundation
 final class UserDetailsDataStore: BaseDataStore, UserDetailsDisplayLogic {
     // MARK: - Variables
 
-    @Published var event: UserDetailEvent?
+    @Published var event: UserDetailsEvent?
 
     var user: UserModel!
 
@@ -45,7 +45,7 @@ final class UserDetailsDataStore: BaseDataStore, UserDetailsDisplayLogic {
             .store(in: &cancellables)
     }
 
-    func reduce(_ event: UserDetailEvent.View) {
+    func reduce(_ event: UserDetailsEvent.View) {
         switch event {
         case .loading(let isLoading):
             self.isLoading = isLoading

@@ -32,7 +32,9 @@ enum Landing {
     }
 
     enum LoadFirstPageUsers {
-        struct Request {}
+        struct Request {
+            var since: Int
+        }
 
         struct Response {
             var users: [UserModel]
