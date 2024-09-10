@@ -16,5 +16,5 @@ let logger = Logger()
 // MARK: - Constants
 
 enum Constants {
-    static let perPage = 10
+    static let perPage = 20
 }
