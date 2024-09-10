@@ -38,7 +38,9 @@ struct UserDetailsView: View {
         List {
             Group {
                 if store.isLoading {
-                    ProgressView().scaleEffect(x: 2, y: 2)
+                    ProgressView()
+                        .scaleEffect(x: 2, y: 2)
+                        .frame(maxWidth: .infinity)
                 } else {
                     UserDetailsHeader(
                         avatarUrl: store.avatarUrl,
