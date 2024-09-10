@@ -25,7 +25,6 @@
 		89768F102C8F563400134DF5 /* MyGitHubUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F0F2C8F563400134DF5 /* MyGitHubUITestsLaunchTests.swift */; };
 		89768F4D2C8F5B2600134DF5 /* BaseDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F1D2C8F5B2500134DF5 /* BaseDataStore.swift */; };
 		89768F502C8F5B2600134DF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F222C8F5B2500134DF5 /* Constants.swift */; };
-		89768F512C8F5B2600134DF5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F242C8F5B2500134DF5 /* Color+Extensions.swift */; };
 		89768F522C8F5B2600134DF5 /* JSON+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F252C8F5B2500134DF5 /* JSON+Extensions.swift */; };
 		89768F532C8F5B2600134DF5 /* Moya+Concurency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F262C8F5B2500134DF5 /* Moya+Concurency.swift */; };
 		89768F542C8F5B2600134DF5 /* Num+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F272C8F5B2500134DF5 /* Num+Extensions.swift */; };
@@ -97,7 +96,6 @@
 		89768F0F2C8F563400134DF5 /* MyGitHubUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGitHubUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		89768F1D2C8F5B2500134DF5 /* BaseDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataStore.swift; sourceTree = "<group>"; };
 		89768F222C8F5B2500134DF5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		89768F242C8F5B2500134DF5 /* Color+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		89768F252C8F5B2500134DF5 /* JSON+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSON+Extensions.swift"; sourceTree = "<group>"; };
 		89768F262C8F5B2500134DF5 /* Moya+Concurency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Moya+Concurency.swift"; sourceTree = "<group>"; };
 		89768F272C8F5B2500134DF5 /* Num+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Num+Extensions.swift"; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */,
-				89768F242C8F5B2500134DF5 /* Color+Extensions.swift */,
 				89768F252C8F5B2500134DF5 /* JSON+Extensions.swift */,
 				89768F262C8F5B2500134DF5 /* Moya+Concurency.swift */,
 				89768F272C8F5B2500134DF5 /* Num+Extensions.swift */,
@@ -545,7 +542,6 @@
 				89768F542C8F5B2600134DF5 /* Num+Extensions.swift in Sources */,
 				89768F872C8F600200134DF5 /* AppError.swift in Sources */,
 				896D73512C8FB3FB003485AD /* MD5.swift in Sources */,
-				89768F512C8F5B2600134DF5 /* Color+Extensions.swift in Sources */,
 				89768FA42C8F6C9C00134DF5 /* UserDetailsPresenter.swift in Sources */,
 				89768FA52C8F6C9C00134DF5 /* UserDetailsDataStore.swift in Sources */,
 				89768FA62C8F6C9C00134DF5 /* UserDetailsInteractor.swift in Sources */,
