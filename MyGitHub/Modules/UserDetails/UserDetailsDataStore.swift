@@ -59,7 +59,7 @@ final class UserDetailsDataStore: BaseDataStore, UserDetailsDisplayLogic {
             if let avatarUrl = user.avatarUrl {
                 self.avatarUrl = avatarUrl
             } else if let gravatarId = user.gravatarId {
-                avatarUrl = "http://www.gravatar.com/avatar/\(MD5(gravatarId))?s=100"
+                avatarUrl = "http://www.gravatar.com/avatar/\(MD5.hex(MD5.data(gravatarId)))?s=100"
             }
             name = user.name ?? ""
             login = user.login

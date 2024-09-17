@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		894B6BEF2C99DA9C009BE95F /* Num+ExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B6BEE2C99DA9C009BE95F /* Num+ExtensionsTest.swift */; };
+		894B6BF22C99DBAB009BE95F /* MD5Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B6BF12C99DBAB009BE95F /* MD5Tests.swift */; };
 		896D734A2C8F975A003485AD /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D73492C8F975A003485AD /* UserCard.swift */; };
 		896D734D2C8FA177003485AD /* UserDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D734C2C8FA177003485AD /* UserDetailsHeader.swift */; };
 		896D734F2C8FA295003485AD /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D734E2C8FA295003485AD /* RoundButton.swift */; };
@@ -84,6 +85,7 @@
 /* Begin PBXFileReference section */
 		894B6BEC2C994CA4009BE95F /* MyGitHub.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyGitHub.xctestplan; sourceTree = "<group>"; };
 		894B6BEE2C99DA9C009BE95F /* Num+ExtensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Num+ExtensionsTest.swift"; sourceTree = "<group>"; };
+		894B6BF12C99DBAB009BE95F /* MD5Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5Tests.swift; sourceTree = "<group>"; };
 		896D73492C8F975A003485AD /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		896D734C2C8FA177003485AD /* UserDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHeader.swift; sourceTree = "<group>"; };
 		896D734E2C8FA295003485AD /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -174,6 +176,14 @@
 				894B6BEE2C99DA9C009BE95F /* Num+ExtensionsTest.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		894B6BF02C99DB9B009BE95F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				894B6BF12C99DBAB009BE95F /* MD5Tests.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		896D73482C8F9648003485AD /* Views */ = {
@@ -306,6 +316,7 @@
 			children = (
 				896D73542C902522003485AD /* Modules */,
 				894B6BED2C99DA7C009BE95F /* Extensions */,
+				894B6BF02C99DB9B009BE95F /* Utils */,
 			);
 			path = MyGitHubTests;
 			sourceTree = "<group>";
@@ -637,6 +648,7 @@
 				896D736F2C902E13003485AD /* LandingPresenterTests.swift in Sources */,
 				896D736C2C902E0A003485AD /* UserDetailsInteractorTests.swift in Sources */,
 				896D736B2C902E0A003485AD /* UserDetailsPresenterTests.swift in Sources */,
+				894B6BF22C99DBAB009BE95F /* MD5Tests.swift in Sources */,
 				896D735F2C902567003485AD /* UsersInteractorTests.swift in Sources */,
 				896D73602C902567003485AD /* UserRepositoryTests.swift in Sources */,
 				894B6BEF2C99DA9C009BE95F /* Num+ExtensionsTest.swift in Sources */,
