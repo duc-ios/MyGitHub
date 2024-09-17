@@ -9,10 +9,10 @@
 import SwiftData
 import XCTest
 
-// MARK: - UsersInteractorTests
+// MARK: - UserDetailsInteractorTests
 
 class UserDetailsInteractorTests: XCTestCase {
-    private var sut: UsersInteractor!
+    private var sut: UserDetailsInteractor!
     private var presenter: UserDetailsPresenterMock!
     private var modelContainer: ModelContainer!
 
@@ -38,20 +38,19 @@ class UserDetailsInteractorTests: XCTestCase {
     @MainActor func testSuccess() {
         // given
         presenter = UserDetailsPresenterMock()
-        sut = UsersInteractor(
+        sut = UserDetailsInteractor(
             presenter: presenter,
-            repository: UserRepositoryMock(),
-            modelContext: modelContainer.mainContext
+            repository: UserRepositoryMock()
         )
         let promise = expectation(description: "User List Received")
 
         // when
-        sut.loadUsers(request: .init(since: 0))
+        sut.getUserDetails(request: .init(login: "duc-ios"))
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             promise.fulfill()
 
             // then
-            XCTAssertNotNil(self?.presenter.users, "Presenter should receive a non-nil response.")
+            XCTAssertNotNil(self?.presenter.user, "Presenter should receive a non-nil user.")
         }
 
         wait(for: [promise], timeout: 5)
@@ -60,15 +59,14 @@ class UserDetailsInteractorTests: XCTestCase {
     @MainActor func testFailure() {
         // given
         presenter = UserDetailsPresenterMock()
-        sut = UsersInteractor(
+        sut = UserDetailsInteractor(
             presenter: presenter,
-            repository: UserRepositoryMock(),
-            modelContext: modelContainer.mainContext
+            repository: UserRepositoryMock()
         )
         let promise = expectation(description: "Error Received")
 
         // when
-        sut.loadUsers(request: .init(since: -1))
+        sut.getUserDetails(request: .init(login: ""))
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             promise.fulfill()
 
@@ -82,20 +80,20 @@ class UserDetailsInteractorTests: XCTestCase {
 
 // MARK: - UserDetailsPresenterMock
 
-class UserDetailsPresenterMock: UsersPresentationLogic {
+class UserDetailsPresenterMock: UserDetailsPresentationLogic {
     var isLoading = false
     var error: Error?
-    var users: [UserModel]?
+    var user: UserModel?
 
     func presentIsLoading(isLoading: Bool) {
         self.isLoading = isLoading
     }
 
-    func presentError(response: Users.ShowError.Response) {
+    func presentError(response: UserDetails.ShowError.Response) {
         error = response.error
     }
 
-    func presentUsers(response: Users.LoadUsers.Response) {
-        users = response.users
+    func presentUserDetails(response: UserDetails.GetUserDetails.Response) {
+        user = response.user
     }
 }

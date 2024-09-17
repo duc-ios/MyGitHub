@@ -30,7 +30,7 @@ class UserDetailsPresenterTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func testPresentUsers() {
+    func testPresentUserDetails() {
         // given
         
         // when
