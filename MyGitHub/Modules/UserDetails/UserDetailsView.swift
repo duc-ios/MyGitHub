@@ -5,6 +5,7 @@
 //  Created by Duc on 10/9/24.
 //
 
+import Routing
 import SwiftData
 import SwiftUI
 
@@ -32,7 +33,6 @@ protocol UserDetailsDisplayLogic {
 struct UserDetailsView: View {
     var interactor: UserDetailsBusinessLogic!
     @ObservedObject var store = UserDetailsDataStore()
-    @EnvironmentObject var router: Router
 
     var body: some View {
         List {

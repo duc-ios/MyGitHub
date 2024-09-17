@@ -10,6 +10,8 @@
 		894B6BEF2C99DA9C009BE95F /* Num+ExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B6BEE2C99DA9C009BE95F /* Num+ExtensionsTest.swift */; };
 		894B6BF22C99DBAB009BE95F /* MD5Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894B6BF12C99DBAB009BE95F /* MD5Tests.swift */; };
 		896156272C9A2DAC0067AFA7 /* AppErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896156262C9A2DAC0067AFA7 /* AppErrorTests.swift */; };
+		8961562B2C9A33EE0067AFA7 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8961562A2C9A33EE0067AFA7 /* StringExtensionsTests.swift */; };
+		896156312C9A8F960067AFA7 /* Routing in Frameworks */ = {isa = PBXBuildFile; productRef = 896156302C9A8F960067AFA7 /* Routing */; };
 		896D734A2C8F975A003485AD /* UserCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D73492C8F975A003485AD /* UserCard.swift */; };
 		896D734D2C8FA177003485AD /* UserDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D734C2C8FA177003485AD /* UserDetailsHeader.swift */; };
 		896D734F2C8FA295003485AD /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 896D734E2C8FA295003485AD /* RoundButton.swift */; };
@@ -26,7 +28,6 @@
 		8970C16D2C8F846600244ABF /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16C2C8F846600244ABF /* GitHubService.swift */; };
 		8970C16F2C8F918300244ABF /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */; };
 		89768EF12C8F563200134DF5 /* MyGitHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768EF02C8F563200134DF5 /* MyGitHubApp.swift */; };
-		89768EF32C8F563200134DF5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768EF22C8F563200134DF5 /* AppView.swift */; };
 		89768EF52C8F563200134DF5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768EF42C8F563200134DF5 /* UserModel.swift */; };
 		89768EF72C8F563300134DF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89768EF62C8F563300134DF5 /* Assets.xcassets */; };
 		89768EFA2C8F563300134DF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89768EF92C8F563300134DF5 /* Preview Assets.xcassets */; };
@@ -40,7 +41,6 @@
 		89768F552C8F5B2600134DF5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F282C8F5B2500134DF5 /* String+Extensions.swift */; };
 		89768F6C2C8F5B2600134DF5 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F462C8F5B2600134DF5 /* ObjectAssociation.swift */; };
 		89768F6D2C8F5B2600134DF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F472C8F5B2600134DF5 /* Route.swift */; };
-		89768F6E2C8F5B2600134DF5 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F482C8F5B2600134DF5 /* Router.swift */; };
 		89768F712C8F5B2600134DF5 /* VerbosePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F4B2C8F5B2600134DF5 /* VerbosePlugin.swift */; };
 		89768F7A2C8F5B8300134DF5 /* UsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F742C8F5B8300134DF5 /* UsersPresenter.swift */; };
 		89768F7B2C8F5B8300134DF5 /* UsersDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89768F752C8F5B8300134DF5 /* UsersDataStore.swift */; };
@@ -88,6 +88,7 @@
 		894B6BEE2C99DA9C009BE95F /* Num+ExtensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Num+ExtensionsTest.swift"; sourceTree = "<group>"; };
 		894B6BF12C99DBAB009BE95F /* MD5Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5Tests.swift; sourceTree = "<group>"; };
 		896156262C9A2DAC0067AFA7 /* AppErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorTests.swift; sourceTree = "<group>"; };
+		8961562A2C9A33EE0067AFA7 /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 		896D73492C8F975A003485AD /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		896D734C2C8FA177003485AD /* UserDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHeader.swift; sourceTree = "<group>"; };
 		896D734E2C8FA295003485AD /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		8970C16E2C8F918300244ABF /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		89768EED2C8F563200134DF5 /* MyGitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89768EF02C8F563200134DF5 /* MyGitHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGitHubApp.swift; sourceTree = "<group>"; };
-		89768EF22C8F563200134DF5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		89768EF42C8F563200134DF5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		89768EF62C8F563300134DF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89768EF92C8F563300134DF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -121,7 +121,6 @@
 		89768F282C8F5B2500134DF5 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		89768F462C8F5B2600134DF5 /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
 		89768F472C8F5B2600134DF5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		89768F482C8F5B2600134DF5 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		89768F4B2C8F5B2600134DF5 /* VerbosePlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerbosePlugin.swift; sourceTree = "<group>"; };
 		89768F742C8F5B8300134DF5 /* UsersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPresenter.swift; sourceTree = "<group>"; };
 		89768F752C8F5B8300134DF5 /* UsersDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataStore.swift; sourceTree = "<group>"; };
@@ -150,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				896156312C9A8F960067AFA7 /* Routing in Frameworks */,
 				89768F852C8F5FC900134DF5 /* SwiftyJSON in Frameworks */,
 				89768F822C8F5C4B00134DF5 /* Moya in Frameworks */,
 			);
@@ -346,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				89768EF02C8F563200134DF5 /* MyGitHubApp.swift */,
-				89768EF22C8F563200134DF5 /* AppView.swift */,
+				89768F472C8F5B2600134DF5 /* Route.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -395,8 +395,6 @@
 			isa = PBXGroup;
 			children = (
 				89768F462C8F5B2600134DF5 /* ObjectAssociation.swift */,
-				89768F472C8F5B2600134DF5 /* Route.swift */,
-				89768F482C8F5B2600134DF5 /* Router.swift */,
 				89768F4B2C8F5B2600134DF5 /* VerbosePlugin.swift */,
 				896D73502C8FB3FB003485AD /* MD5.swift */,
 			);
@@ -489,6 +487,7 @@
 			packageProductDependencies = (
 				89768F812C8F5C4B00134DF5 /* Moya */,
 				89768F842C8F5FC900134DF5 /* SwiftyJSON */,
+				896156302C9A8F960067AFA7 /* Routing */,
 			);
 			productName = MyGitHub;
 			productReference = 89768EED2C8F563200134DF5 /* MyGitHub.app */;
@@ -565,6 +564,7 @@
 			packageReferences = (
 				89768F802C8F5C4B00134DF5 /* XCRemoteSwiftPackageReference "Moya" */,
 				89768F832C8F5FC900134DF5 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				8961562F2C9A8F960067AFA7 /* XCRemoteSwiftPackageReference "Routing" */,
 			);
 			productRefGroup = 89768EEE2C8F563200134DF5 /* Products */;
 			projectDirPath = "";
@@ -610,7 +610,6 @@
 			files = (
 				89768F4D2C8F5B2600134DF5 /* BaseDataStore.swift in Sources */,
 				896D734F2C8FA295003485AD /* RoundButton.swift in Sources */,
-				89768F6E2C8F5B2600134DF5 /* Router.swift in Sources */,
 				89768F942C8F6AC000134DF5 /* LandingPresenter.swift in Sources */,
 				8970C16A2C8F836700244ABF /* UserRepository.swift in Sources */,
 				89768F952C8F6AC000134DF5 /* LandingDataStore.swift in Sources */,
@@ -643,7 +642,6 @@
 				89768FA72C8F6C9C00134DF5 /* UserDetailsView.swift in Sources */,
 				89768FA82C8F6C9C00134DF5 /* UserDetailsUseCases.swift in Sources */,
 				89768FA92C8F6C9C00134DF5 /* UserDetailsConfigurator.swift in Sources */,
-				89768EF32C8F563200134DF5 /* AppView.swift in Sources */,
 				896D734D2C8FA177003485AD /* UserDetailsHeader.swift in Sources */,
 				89768F502C8F5B2600134DF5 /* Constants.swift in Sources */,
 				89768EF52C8F563200134DF5 /* UserModel.swift in Sources */,
@@ -982,6 +980,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8961562F2C9A8F960067AFA7 /* XCRemoteSwiftPackageReference "Routing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/duc-ios/Routing";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		89768F802C8F5C4B00134DF5 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -1001,6 +1007,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		896156302C9A8F960067AFA7 /* Routing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8961562F2C9A8F960067AFA7 /* XCRemoteSwiftPackageReference "Routing" */;
+			productName = Routing;
+		};
 		89768F812C8F5C4B00134DF5 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 89768F802C8F5C4B00134DF5 /* XCRemoteSwiftPackageReference "Moya" */;

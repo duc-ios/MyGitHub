@@ -5,6 +5,7 @@
 //  Created by Duc on 9/9/24.
 //
 
+import Routing
 import SwiftData
 import SwiftUI
 
@@ -32,13 +33,13 @@ protocol UsersDisplayLogic {
 struct UsersView: View {
     var interactor: UsersBusinessLogic!
     @ObservedObject var store = UsersDataStore()
-    @EnvironmentObject var router: Router
+    @EnvironmentObject var router: Router<Route>
 
     var body: some View {
         List {
             ForEach(store.users) { user in
                 UserCard(user: user) {
-                    router.show(.userDetails(user))
+                    router.routeTo(.userDetails(user))
                 }
             }
 
@@ -71,14 +72,18 @@ struct UsersView: View {
         configurations:
         ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
     )
-    return UsersView()
-        .configured(users: (0 ..< 10).map {
-            UserModel(
-                id: $0,
-                login: "User \($0)",
-                avatarUrl: "https://avatars.githubusercontent.com/u/0"
-            )
-        })
-        .modelContainer(container)
+    return RoutingView(Route.self) { router in
+        UsersView()
+            .configured(users: (1 ... 10).map {
+                UserModel(
+                    id: $0,
+                    login: "mojombo",
+                    htmlUrl: "https://github.com/mojombo",
+                    avatarUrl: "https://avatars.githubusercontent.com/u/\($0)"
+                )
+            })
+            .modelContainer(container)
+            .environmentObject(router)
+    }.tint(.primary)
 }
 #endif

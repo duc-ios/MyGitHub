@@ -5,6 +5,7 @@
 //  Created by Duc on 9/9/24.
 //
 
+import Routing
 import SwiftData
 import SwiftUI
 
@@ -32,7 +33,12 @@ let sharedModelContainer: ModelContainer = {
 struct MyGitHubApp: App {
     var body: some Scene {
         WindowGroup {
-            AppView().tint(.primary)
+            RoutingView(Route.self) { router in
+                LandingView()
+                    .configured()
+                    .environmentObject(router)
+            }
+            .tint(.primary)
         }
         .modelContainer(sharedModelContainer)
     }
