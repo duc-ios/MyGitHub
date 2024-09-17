@@ -81,6 +81,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		894B6BEC2C994CA4009BE95F /* MyGitHub.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyGitHub.xctestplan; sourceTree = "<group>"; };
 		896D73492C8F975A003485AD /* UserCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCard.swift; sourceTree = "<group>"; };
 		896D734C2C8FA177003485AD /* UserDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHeader.swift; sourceTree = "<group>"; };
 		896D734E2C8FA295003485AD /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -248,6 +249,7 @@
 		89768EE42C8F563200134DF5 = {
 			isa = PBXGroup;
 			children = (
+				894B6BEC2C994CA4009BE95F /* MyGitHub.xctestplan */,
 				89768EEF2C8F563200134DF5 /* MyGitHub */,
 				89768F022C8F563400134DF5 /* MyGitHubTests */,
 				89768F0C2C8F563400134DF5 /* MyGitHubUITests */,
@@ -838,7 +840,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ios.duc.MyGitHubTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -857,7 +858,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ios.duc.MyGitHubTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
