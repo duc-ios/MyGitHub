@@ -176,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				894B6BEE2C99DA9C009BE95F /* Num+ExtensionsTest.swift */,
+				8961562A2C9A33EE0067AFA7 /* StringExtensionsTests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -655,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8961562B2C9A33EE0067AFA7 /* StringExtensionsTests.swift in Sources */,
 				896D73702C902E13003485AD /* LandingInteractorTests.swift in Sources */,
 				896D736F2C902E13003485AD /* LandingPresenterTests.swift in Sources */,
 				896156272C9A2DAC0067AFA7 /* AppErrorTests.swift in Sources */,
