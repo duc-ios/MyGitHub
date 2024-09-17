@@ -23,32 +23,34 @@ enum AppError: LocalizedError, Equatable {
         other(code: Int = -1, message: String)
 
     var errorDescription: String? {
-        message
+        "\(title): \(message)"
     }
 
     var title: String {
         switch self {
+        case .unexpected:
+            return "Unexpected Error"
         case .network:
-            return "No Network!"
+            return "No Network"
         default:
-            return "Something went wrong!"
+            return "Something went wrong"
         }
     }
 
     var message: String {
         switch self {
         case .unimplemented:
-            return "Unimplemented"
+            return "Unimplemented."
         case .unexpected:
-            return "Unexpected"
+            return "An unexpected error occurred."
         case .unauthenticated:
-            return "Unauthenticated"
+            return "Unauthenticated."
         case .badRequest:
-            return "Bad request"
+            return "Bad request."
         case .notFound:
-            return "Not found"
+            return "Not found."
         case .network:
-            return "Please try again"
+            return "Please try again."
         case let .error(error):
             if let error = error as? AppError {
                 return error.message
