@@ -6,10 +6,10 @@
 //
 
 @testable import MyGitHub
-import XCTest
+import Testing
 
-class MD5Tests: XCTestCase {
-    func testMD5() {
+final class MD5Tests {
+    @Test func md5() {
         // given
         let str = "duc-ios"
 
@@ -18,6 +18,6 @@ class MD5Tests: XCTestCase {
         let hex = MD5.hex(data)
 
         // then
-        XCTAssertEqual(hex, "2d9b6a76c3ba10985dde37ba0baef5b4", "Should return md5 hash string.")
+        #expect(hex == "2d9b6a76c3ba10985dde37ba0baef5b4", "Should return md5 hash string.")
     }
 }

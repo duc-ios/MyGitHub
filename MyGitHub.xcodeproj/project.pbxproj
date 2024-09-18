@@ -237,8 +237,8 @@
 		896D73562C902538003485AD /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				896D735A2C902567003485AD /* UsersInteractorTests.swift */,
 				896D73592C902567003485AD /* UsersPresenterTests.swift */,
+				896D735A2C902567003485AD /* UsersInteractorTests.swift */,
 				896D735C2C902567003485AD /* Repositories */,
 			);
 			path = Users;

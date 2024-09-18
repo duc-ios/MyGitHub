@@ -7,18 +7,20 @@
 
 @testable import MyGitHub
 import SwiftData
-import XCTest
+import Testing
+import UIKit
 
 // MARK: - UserDetailsInteractorTests
 
-class UserDetailsInteractorTests: XCTestCase {
+final class UserDetailsInteractorTests {
     private var sut: UserDetailsInteractor!
     private var presenter: UserDetailsPresenterMock!
     private var modelContainer: ModelContainer!
+    private var repository: UserRepositoryMock!
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-
+    init() {
+        presenter = UserDetailsPresenterMock()
+        repository = UserRepositoryMock()
         let schema = Schema([UserModel.self])
         modelContainer = try! ModelContainer(
             for: schema,
@@ -27,54 +29,74 @@ class UserDetailsInteractorTests: XCTestCase {
         )
     }
 
-    override func tearDownWithError() throws {
+    deinit {
         presenter = nil
         sut = nil
         modelContainer = nil
-
-        try super.tearDownWithError()
     }
 
-    @MainActor func testSuccess() {
+    @Test func showLoading() {
         // given
-        presenter = UserDetailsPresenterMock()
         sut = UserDetailsInteractor(
             presenter: presenter,
-            repository: UserRepositoryMock()
+            repository: repository
         )
-        let promise = expectation(description: "User List Received")
+
+        // when
+        sut.showLoading(isLoading: true)
+
+        // then
+        #expect(presenter.isLoading == true, "Presenter should receive a loading state.")
+
+        // when
+        sut.showLoading(isLoading: false)
+
+        // then
+        #expect(presenter.isLoading == false, "Presenter should receive a loading state.")
+    }
+
+    @Test func showError() {
+        // given
+        sut = UserDetailsInteractor(
+            presenter: presenter,
+            repository: repository
+        )
+
+        // when
+        sut.showError(request: .init(error: AppError.unexpected))
+
+        // then
+        #expect(presenter.error != nil, "Presenter should receive an error.")
+    }
+
+    @Test @MainActor func success() async throws {
+        // given
+        sut = UserDetailsInteractor(
+            presenter: presenter,
+            repository: repository
+        )
 
         // when
         sut.getUserDetails(request: .init(login: "duc-ios"))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            promise.fulfill()
+        try await Task.sleep(for: .seconds(0.1))
 
-            // then
-            XCTAssertNotNil(self?.presenter.user, "Presenter should receive a non-nil user.")
-        }
-
-        wait(for: [promise], timeout: 5)
+        // then
+        #expect(presenter.user != nil, "Presenter should receive a non-nil user.")
     }
 
-    @MainActor func testFailure() {
+    @Test @MainActor func failure() async throws {
         // given
-        presenter = UserDetailsPresenterMock()
         sut = UserDetailsInteractor(
             presenter: presenter,
-            repository: UserRepositoryMock()
+            repository: repository
         )
-        let promise = expectation(description: "Error Received")
 
         // when
         sut.getUserDetails(request: .init(login: ""))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            promise.fulfill()
+        try await Task.sleep(for: .seconds(0.1))
 
-            // then
-            XCTAssertNotNil(self?.presenter.error, "Presenter should receive a non-nil error.")
-        }
-
-        wait(for: [promise], timeout: 5)
+        // then
+        #expect(presenter.error != nil, "Presenter should receive a non-nil error.")
     }
 }
 

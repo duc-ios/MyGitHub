@@ -7,18 +7,19 @@
 
 @testable import MyGitHub
 import SwiftData
-import XCTest
+import Testing
 
 // MARK: - LandingInteractorTests
 
-class LandingInteractorTests: XCTestCase {
+class LandingInteractorTests {
     private var sut: LandingInteractor!
     private var presenter: LandingPresenterMock!
+    private var repository: UserRepositoryMock
     private var modelContainer: ModelContainer!
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-
+    init() {
+        presenter = LandingPresenterMock()
+        repository = UserRepositoryMock()
         let schema = Schema([UserModel.self])
         modelContainer = try! ModelContainer(
             for: schema,
@@ -27,56 +28,79 @@ class LandingInteractorTests: XCTestCase {
         )
     }
 
-    override func tearDownWithError() throws {
+    deinit {
         presenter = nil
         sut = nil
         modelContainer = nil
-
-        try super.tearDownWithError()
     }
 
-    @MainActor func testLoadFirstPageUsersSuccess() {
+    @Test @MainActor func showLoading() {
         // given
-        presenter = LandingPresenterMock()
         sut = LandingInteractor(
             presenter: presenter,
-            repository: UserRepositoryMock(),
+            repository: repository,
             modelContext: modelContainer.mainContext
         )
-        let promise = expectation(description: "User List Received")
+
+        // when
+        sut.showLoading(isLoading: true)
+
+        // then
+        #expect(presenter.isLoading == true, "Presenter should receive a loading state.")
+
+        // when
+        sut.showLoading(isLoading: false)
+
+        // then
+        #expect(presenter.isLoading == false, "Presenter should receive a loading state.")
+    }
+    
+
+    @Test @MainActor func showError() {
+        // given
+        sut = LandingInteractor(
+            presenter: presenter,
+            repository: repository,
+            modelContext: modelContainer.mainContext
+        )
+
+        // when
+        sut.showError(request: .init(error: AppError.unexpected))
+
+        // then
+        #expect(presenter.error != nil, "Presenter should receive an error.")
+    }
+
+    @Test @MainActor func loadFirstPageUsersSuccess() async throws {
+        // given
+        sut = LandingInteractor(
+            presenter: presenter,
+            repository: repository,
+            modelContext: modelContainer.mainContext
+        )
 
         // when
         sut.loadFirstPageUsers(request: .init(since: 0))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            promise.fulfill()
+        try await Task.sleep(for: .seconds(0.1))
 
-            // then
-            XCTAssertNotNil(self?.presenter.users, "Presenter should receive a non-nil response.")
-        }
-
-        wait(for: [promise], timeout: 5)
+        // then
+        #expect(presenter.users != nil, "Presenter should receive a non-nil response.")
     }
 
-    @MainActor func testLoadFirstPageUsersFailure() {
+    @Test @MainActor func loadFirstPageUsersFailure() async throws {
         // given
-        presenter = LandingPresenterMock()
         sut = LandingInteractor(
             presenter: presenter,
-            repository: UserRepositoryMock(),
+            repository: repository,
             modelContext: modelContainer.mainContext
         )
-        let promise = expectation(description: "Error Received")
 
         // when
         sut.loadFirstPageUsers(request: .init(since: -1))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            promise.fulfill()
+        try await Task.sleep(for: .seconds(0.1))
 
-            // then
-            XCTAssertNotNil(self?.presenter.error, "Presenter should receive a non-nil error.")
-        }
-
-        wait(for: [promise], timeout: 5)
+        // then
+        #expect(presenter.error != nil, "Presenter should receive a non-nil error.")
     }
 }
 
@@ -94,8 +118,8 @@ class LandingPresenterMock: LandingPresentationLogic {
     func presentError(response: Landing.ShowError.Response) {
         error = response.error
     }
-    
+
     func presentUsers(response: Landing.LoadFirstPageUsers.Response) {
-        self.users = response.users
+        users = response.users
     }
 }

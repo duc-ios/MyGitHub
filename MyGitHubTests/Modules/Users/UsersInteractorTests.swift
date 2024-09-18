@@ -7,18 +7,19 @@
 
 @testable import MyGitHub
 import SwiftData
-import XCTest
+import Testing
 
 // MARK: - UsersInteractorTests
 
-class UsersInteractorTests: XCTestCase {
+final class UsersInteractorTests {
     private var sut: UsersInteractor!
     private var presenter: UsersPresenterMock!
+    private var repository: UserRepositoryMock!
     private var modelContainer: ModelContainer!
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-
+    init() {
+        presenter = UsersPresenterMock()
+        repository = UserRepositoryMock()
         let schema = Schema([UserModel.self])
         modelContainer = try! ModelContainer(
             for: schema,
@@ -27,56 +28,94 @@ class UsersInteractorTests: XCTestCase {
         )
     }
 
-    override func tearDownWithError() throws {
+    deinit {
         presenter = nil
         sut = nil
         modelContainer = nil
-
-        try super.tearDownWithError()
     }
 
-    @MainActor func testLoadUsersSuccess() {
+    @Test @MainActor func showLoading() {
         // given
-        presenter = UsersPresenterMock()
         sut = UsersInteractor(
             presenter: presenter,
-            repository: UserRepositoryMock(),
+            repository: repository,
             modelContext: modelContainer.mainContext
         )
-        let promise = expectation(description: "User List Received")
+
+        // when
+        sut.showLoading(isLoading: true)
+
+        // then
+        #expect(presenter.isLoading == true, "Presenter should receive a loading state.")
+
+        // when
+        sut.showLoading(isLoading: false)
+
+        // then
+        #expect(presenter.isLoading == false, "Presenter should receive a loading state.")
+    }
+
+    @Test @MainActor func showError() {
+        // given
+        sut = UsersInteractor(
+            presenter: presenter,
+            repository: repository,
+            modelContext: modelContainer.mainContext
+        )
+
+        // when
+        sut.showError(request: .init(error: AppError.unexpected))
+
+        // then
+        #expect(presenter.error != nil, "Presenter should receive an error.")
+    }
+
+    @Test @MainActor func loadUsersSuccess() async throws {
+        // given
+        sut = UsersInteractor(
+            presenter: presenter,
+            repository: repository,
+            modelContext: modelContainer.mainContext
+        )
 
         // when
         sut.loadUsers(request: .init(since: 0))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            promise.fulfill()
+        try await Task.sleep(for: .seconds(0.1))
 
-            // then
-            XCTAssertNotNil(self?.presenter.users, "Presenter should receive a non-nil response.")
-        }
-
-        wait(for: [promise], timeout: 5)
+        // then
+        #expect(presenter.users != nil, "Presenter should receive a non-nil response.")
     }
 
-    @MainActor func testLoadUsersFailure() {
+    @Test @MainActor func loadUsersFailure() async throws {
         // given
-        presenter = UsersPresenterMock()
         sut = UsersInteractor(
             presenter: presenter,
-            repository: UserRepositoryMock(),
+            repository: repository,
             modelContext: modelContainer.mainContext
         )
-        let promise = expectation(description: "Error Received")
 
         // when
         sut.loadUsers(request: .init(since: -1))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            promise.fulfill()
+        try await Task.sleep(for: .seconds(0.1))
 
-            // then
-            XCTAssertNotNil(self?.presenter.error, "Presenter should receive a non-nil error.")
-        }
+        // then
+        #expect(presenter.error != nil, "Presenter should receive a non-nil error.")
+    }
 
-        wait(for: [promise], timeout: 5)
+    @Test @MainActor func showUsers() async throws {
+        // given
+        sut = UsersInteractor(
+            presenter: presenter,
+            repository: repository,
+            modelContext: modelContainer.mainContext
+        )
+
+        // when
+        sut.showUsers(request: .init(users: []))
+        try await Task.sleep(for: .seconds(0.1))
+
+        // then
+        #expect(presenter.users != nil, "Presenter should receive a non-nil response.")
     }
 }
 

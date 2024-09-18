@@ -6,48 +6,83 @@
 //
 
 @testable import MyGitHub
-import XCTest
+import Testing
+import UIKit
 
 // MARK: - UserDetailsPresenterTests
 
-class UserDetailsPresenterTests: XCTestCase {
+final class UserDetailsPresenterTests {
     private var sut: UserDetailsPresenter!
     private var view: UserDetailsDisplayLogicMock!
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        
+    init() {
+        UIView.setAnimationsEnabled(false)
+
         view = UserDetailsDisplayLogicMock()
         sut = UserDetailsPresenter(view: view)
     }
     
-    override func tearDownWithError() throws {
+    deinit {
         view = nil
         sut = nil
 
         UIView.setAnimationsEnabled(true)
-
-        try super.tearDownWithError()
     }
     
-    func testPresentUserDetails() {
+    @Test func presentUserDetails() {
         // given
         
         // when
         sut.presentUserDetails(response: .init(user: UserModel()))
         
         // then
-        XCTAssertNotNil(view.user, "View should receive a non-nil user.")
+        #expect(view.user != nil, "View should receive a non-nil user.")
     }
     
-    func testPresentError() {
+    @Test func presentIsLoadingTrue() {
         // given
+        let isLoading = true
         
         // when
-        sut.presentError(response: .init(error: AppError.notFound))
+        sut.presentIsLoading(isLoading: isLoading)
         
         // then
-        XCTAssertNotNil(view.error, "View should receive a non-nil error.")
+        #expect(view.isLoading == isLoading, "View should receive the isLoading.")
+    }
+    
+    @Test func presentIsLoadingFalse() {
+        // given
+        let isLoading = false
+        
+        // when
+        sut.presentIsLoading(isLoading: isLoading)
+        
+        // then
+        #expect(view.isLoading == isLoading, "View should receive the isLoading.")
+    }
+    
+    @Test func presentAlert() {
+        // given
+        let alertTitle = "Title"
+        let alertMessage = "Message"
+        
+        // when
+        sut.presentAlert(response: .init(title: alertTitle, message: alertMessage))
+        
+        // then
+        #expect(view.alertTitle == alertTitle, "View should receive the alert title.")
+        #expect(view.alertMessage == alertMessage, "View should receive the alert message.")
+    }
+    
+    @Test func presentError() {
+        // given
+        let error = AppError.notFound
+
+        // when
+        sut.presentError(response: .init(error: error))
+        
+        // then
+        #expect(view.error == error, "View should receive the error.")
     }
 }
 

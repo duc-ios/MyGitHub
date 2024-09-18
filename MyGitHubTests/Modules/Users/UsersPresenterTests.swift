@@ -6,49 +6,84 @@
 //
 
 @testable import MyGitHub
-import XCTest
+import Testing
+import UIKit
 
 // MARK: - UsersPresenterTests
 
-class UsersPresenterTests: XCTestCase {
+final class UsersPresenterTests {
     private var sut: UsersPresenter!
     private var view: UsersDisplayLogicMock!
-    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        
+
+    init() {
+        UIView.setAnimationsEnabled(false)
+
         view = UsersDisplayLogicMock()
         sut = UsersPresenter(view: view)
     }
-    
-    override func tearDownWithError() throws {
+
+    deinit {
         view = nil
         sut = nil
 
         UIView.setAnimationsEnabled(true)
-
-        try super.tearDownWithError()
     }
-    
-    func testPresentUsers() {
+
+    @Test func presentUsers() {
         // given
         let users: [UserModel] = []
-        
+
         // when
         sut.presentUsers(response: .init(users: users, hasMore: true))
-        
+
         // then
-        XCTAssertEqual(view.users, users, "View should receive the request user list.")
+        #expect(view.users == users, "View should receive the request user list.")
     }
-    
-    func testPresentError() {
+
+    @Test func presentIsLoadingTrue() {
         // given
-        
+        let isLoading = true
+
         // when
-        sut.presentError(response: .init(error: AppError.notFound))
-        
+        sut.presentIsLoading(isLoading: isLoading)
+
         // then
-        XCTAssertNotNil(view.error, "View should receive a non-nil error.")
+        #expect(view.isLoading == isLoading, "View should receive the isLoading.")
+    }
+
+    @Test func presentIsLoadingFalse() {
+        // given
+        let isLoading = false
+
+        // when
+        sut.presentIsLoading(isLoading: isLoading)
+
+        // then
+        #expect(view.isLoading == isLoading, "View should receive the isLoading.")
+    }
+
+    @Test func presentAlert() {
+        // given
+        let alertTitle = "Title"
+        let alertMessage = "Message"
+
+        // when
+        sut.presentAlert(response: .init(title: alertTitle, message: alertMessage))
+
+        // then
+        #expect(view.alertTitle == alertTitle, "View should receive the alert title.")
+        #expect(view.alertMessage == alertMessage, "View should receive the alert message.")
+    }
+
+    @Test func presentError() {
+        // given
+        let error = AppError.notFound
+
+        // when
+        sut.presentError(response: .init(error: error))
+
+        // then
+        #expect(view.error == error, "View should receive the error.")
     }
 }
 
@@ -61,7 +96,7 @@ class UsersDisplayLogicMock: UsersDisplayLogic {
     var error: AppError?
     var users: [UserModel]?
     var hasMore = false
-    
+
     var event: UsersEvent? {
         didSet {
             switch event {

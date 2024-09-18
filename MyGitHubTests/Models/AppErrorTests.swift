@@ -6,10 +6,10 @@
 //
 
 @testable import MyGitHub
-import XCTest
+import Testing
 
-class AppErrorTests: XCTestCase {
-    func testTitle() {
+class AppErrorTests {
+    @Test func title() {
         // given
         let error = AppError.unexpected
         
@@ -17,10 +17,10 @@ class AppErrorTests: XCTestCase {
         let title = error.title
         
         // then
-        XCTAssertEqual(title, "Unexpected Error", "title is not correct")
+        #expect(title == "Unexpected Error", "title is not correct")
     }
     
-    func testMessage() {
+    @Test func message() {
         // given
         let error = AppError.unexpected
         
@@ -28,10 +28,10 @@ class AppErrorTests: XCTestCase {
         let message = error.message
         
         // then
-        XCTAssertEqual(message, "An unexpected error occurred.", "message is not correct")
+        #expect(message == "An unexpected error occurred.", "message is not correct")
     }
     
-    func testErrorDescription() {
+    @Test func errorDescription() {
         // given
         let error = AppError.unexpected
         
@@ -39,6 +39,6 @@ class AppErrorTests: XCTestCase {
         let description = error.errorDescription
         
         // then
-        XCTAssertEqual(description, "Unexpected Error: An unexpected error occurred.", "description is not correct")
+        #expect(description == "Unexpected Error: An unexpected error occurred.", "description is not correct")
     }
 }

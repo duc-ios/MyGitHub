@@ -6,10 +6,10 @@
 //
 
 @testable import MyGitHub
-import XCTest
+import Testing
 
-class StringExtensionsTests: XCTestCase {
-    func testTrimmed() {
+final class StringExtensionsTests {
+    @Test func trimmed() {
         // given
         let string = "   hello world   "
         
@@ -17,10 +17,10 @@ class StringExtensionsTests: XCTestCase {
         let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
         
         // then
-        XCTAssertEqual(trimmed, "hello world", "string should be trimmed")
+        #expect(trimmed == "hello world", "string should be trimmed")
     }
     
-    func testIsBlank() {
+    @Test func isBlank() {
         // given
         let string = "   "
         
@@ -28,10 +28,10 @@ class StringExtensionsTests: XCTestCase {
         let isBlank = string.isBlank
         
         // then
-        XCTAssertTrue(isBlank, "string should be blank")
+        #expect(isBlank == true, "string should be blank")
     }
 
-    func testIsNilOrBlank() {
+    @Test func isNilOrBlank() {
         // given
         let string: String? = nil
         
@@ -39,6 +39,6 @@ class StringExtensionsTests: XCTestCase {
         let isNilOrBlank = string.isNilOrBlank
         
         // then
-        XCTAssertTrue(isNilOrBlank, "string should be nil or blank")
+        #expect(isNilOrBlank == true, "string should be nil or blank")
     }
 }

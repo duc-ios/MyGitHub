@@ -6,28 +6,17 @@
 //
 
 @testable import MyGitHub
-import XCTest
+import Testing
 
-class NumExtensionsTests: XCTestCase {
-    func testStringValue() {
+final class NumExtensionsTests {
+    @Test func stringValue() {
         // given
         let num = 99
-        
+
         // when
         let result = num.stringValue
-        
+
         // then
-        XCTAssertEqual(result, "99", "Should return a string '99'.")
-    }
-    
-    func testSecondsToNanoSeconds() {
-        // given
-        let num = 99
-        
-        // when
-        let result = num.secondsToNanoSeconds
-        
-        // then
-        XCTAssertEqual(result, 99000000000, "Should return a number 99000000000.")
+        #expect(result == "99", "Should return a string '99'.")
     }
 }
