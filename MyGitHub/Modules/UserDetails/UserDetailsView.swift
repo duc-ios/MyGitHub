@@ -82,6 +82,7 @@ struct UserDetailsView: View {
                 Spacer()
             }
             .listRowSeparator(.hidden)
+            .buttonStyle(PlainButtonStyle())
 
             DetailCard(icon: "mappin.and.ellipse",
                        title: "Location",
